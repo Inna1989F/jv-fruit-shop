@@ -14,7 +14,7 @@ public class ReportGeneratorImpl implements ReportGenerator {
     @Override
     public String getReport() {
         StringBuilder report = new StringBuilder();
-        report.append("fruit, quantity");
+        report.append("fruit,quantity");
         report.append(System.lineSeparator());
 
         for (Map.Entry<String, Integer> entry : storage.getAll().entrySet()) {

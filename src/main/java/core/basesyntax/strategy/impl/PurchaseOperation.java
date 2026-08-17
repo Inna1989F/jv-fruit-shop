@@ -16,7 +16,10 @@ public class PurchaseOperation implements OperationHandler {
         int currentQuantity = storage.getQuantity(transaction.getFruit());
 
         int newQuantity = currentQuantity - transaction.getQuantity();
-
+if (newQuantity < 0) {
+    throw new RuntimeException(
+            "Not enough fruit in storage for purchase");
+}
         storage.setQuantity(transaction.getFruit(),
                 newQuantity);
     }

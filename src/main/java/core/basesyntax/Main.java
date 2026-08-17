@@ -25,9 +25,15 @@ import java.util.List;
 import java.util.Map;
 
 public class Main {
+    private static final String INPUT_FILE =
+            "src/main/resources/reportToRead.csv";
+    private static final String OUTPUT_FILE =
+            "src/main/resources/finalReport.csv";
+
     public static void main(String[] args) {
+
         FileReader fileReader = new FileReaderImpl();
-        List<String> inputReport = fileReader.read("reportToRead.csv");
+        List<String> inputReport = fileReader.read(INPUT_FILE);
 
         FruitStorage storage = new Storage();
         Map<FruitTransaction.Operation, OperationHandler> handlers =
@@ -49,7 +55,7 @@ public class Main {
         ReportGenerator reportGenerator = new ReportGeneratorImpl(storage);
         String report = reportGenerator.getReport();
         FileWriter fileWriter = new FileWriterImpl();
-        fileWriter.write(report, "finalReport.csv");
+        fileWriter.write(report, OUTPUT_FILE);
 
     }
 }
